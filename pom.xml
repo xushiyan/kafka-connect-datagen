@@ -7,6 +7,14 @@
     <groupId>com.github.xushiyan</groupId>
     <artifactId>kafka-connect-datagen</artifactId>
     <version>1.0</version>
+    <url>https://github.com/xushiyan/kafka-connect-datagen/</url>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://github.com/xushiyan/kafka-connect-datagen/blob/master/LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <build>
         <plugins>
             <plugin>
