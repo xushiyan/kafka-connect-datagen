@@ -12,7 +12,7 @@ public class DatagenConnector extends SourceConnector {
     private Map<String, String> props;
 
     public String version() {
-        return "1.0";
+        return VersionUtil.VERSION;
     }
 
     public void start(Map<String, String> props) {

@@ -16,7 +16,7 @@ public class DatagenTask extends SourceTask {
     private JsonObject messageTemplate;
 
     public String version() {
-        return "1.0";
+        return VersionUtil.VERSION;
     }
 
     public void start(Map<String, String> props) {
@@ -25,25 +25,32 @@ public class DatagenTask extends SourceTask {
         this.messageTemplate = this.gson.fromJson(this.config.messageTemplate, JsonObject.class);
     }
 
-    Map<String, ?> sourcePartition = new HashMap<>();
-    Map<String, ?> sourceOffset = new HashMap<>();
+    private final Map<String, ?> sourcePartition = new HashMap<>();
+    private final Map<String, ?> sourceOffset = new HashMap<>();
 
     public List<SourceRecord> poll() throws InterruptedException {
-        List<SourceRecord> records = new ArrayList<>(this.config.messageCount);
+        DatagenConnectorConfig config = this.config;
+        Gson gson = this.gson;
+        JsonObject msgTemplate = this.messageTemplate;
+
+        Thread.sleep((long) (config.batchInterval * 1000));
+
+        List<SourceRecord> records = new ArrayList<>(config.batchSize);
         Random randomizer = new Random();
 
-        for (int i = 0; i < this.config.messageCount; i++) {
-            JsonObject msg = messageTemplate.deepCopy();
+        for (int i = 0; i < config.batchSize; i++) {
+            JsonObject msg = msgTemplate.deepCopy();
 
-            int size = this.config.randomFieldValues.size();
-            String randomValue = this.config.randomFieldValues.get(randomizer.nextInt(size));
-            msg.addProperty(this.config.randomField, randomValue);
+            int num = config.randomFieldValues.size();
+            String randomValue = config.randomFieldValues.get(randomizer.nextInt(num));
+            msg.addProperty(config.randomField, randomValue);
 
             long now = Instant.now().toEpochMilli();
-            msg.addProperty(this.config.eventTimestampField, now);
+            msg.addProperty(config.eventTimestampField, now);
 
-            records.add(new SourceRecord(sourcePartition, sourceOffset, this.config.topic, Schema.STRING_SCHEMA, this.gson.toJson(msg)));
+            records.add(new SourceRecord(sourcePartition, sourceOffset, config.topic, Schema.STRING_SCHEMA, gson.toJson(msg)));
         }
+
         return records;
     }
 
