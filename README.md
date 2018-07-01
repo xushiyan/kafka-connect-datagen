@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/xushiyan/kafka-connect-datagen.svg?branch=master)](https://travis-ci.org/xushiyan/kafka-connect-datagen)
 
-`kafka-connect-datagen` is a Kafka Connect source connector that generates test data for performance and integration tests.
+`kafka-connect-datagen` is a [Kafka Connect](http://kafka.apache.org/documentation.html#connect) plugin that generates test data for performance and integration tests.
 
 ## Configurations
 
@@ -10,8 +10,8 @@
 |:----|-------|:-------------:|
 | `topic`                 | Kafka topic to send data to ||
 | `test.mode`             | To indicate test setup type: `performance` or `integration`| `performance`|
-| `batch.size`            | Number of messages sent in one batch | |
-| `batch.interval`        | Time interval (sec) between two batches | |
+| `poll.size`             | Number of messages sent in one batch | |
+| `poll.interval.ms`      | Time interval between two batches | |
 | `message.template`      | Template to be used for each message | |
 | `random.field`          | Field to be randomized | |
 | `random.field.values`   | Comma-delimited possible values for the specified random field | |

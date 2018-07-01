@@ -25,6 +25,7 @@ import org.apache.kafka.connect.source.SourceTask;
 
 import java.time.Instant;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class DatagenTask extends SourceTask {
     private DatagenConnectorConfig config;
@@ -49,20 +50,22 @@ public class DatagenTask extends SourceTask {
         Gson gson = this.gson;
         JsonObject msgTemplate = this.messageTemplate;
 
-        Thread.sleep((long) (config.batchInterval * 1000));
+        Thread.sleep(config.pollInterval);
 
-        List<SourceRecord> records = new ArrayList<>(config.batchSize);
+        List<SourceRecord> records = new ArrayList<>(config.pollSize);
         Random randomizer = new Random();
 
-        for (int i = 0; i < config.batchSize; i++) {
+        for (int i = 0; i < config.pollSize; i++) {
             JsonObject msg = msgTemplate.deepCopy();
 
             int num = config.randomFieldValues.size();
             String randomValue = config.randomFieldValues.get(randomizer.nextInt(num));
             msg.addProperty(config.randomField, randomValue);
 
-            long now = Instant.now().toEpochMilli();
-            msg.addProperty(config.eventTimestampField, now);
+            Instant now = Instant.now();
+            long nanos = TimeUnit.SECONDS.toNanos(now.getEpochSecond()) + now.getNano();
+
+            msg.addProperty(config.eventTimestampField, nanos);
 
             records.add(new SourceRecord(sourcePartition, sourceOffset, config.topic, Schema.STRING_SCHEMA, gson.toJson(msg)));
         }

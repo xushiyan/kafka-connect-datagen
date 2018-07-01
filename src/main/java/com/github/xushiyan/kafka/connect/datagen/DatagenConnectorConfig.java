@@ -30,9 +30,9 @@ public class DatagenConnectorConfig extends AbstractConfig {
 
     private static final String TEST_MODE_CONFIG = "test.mode";
 
-    private static final String BATCH_SIZE_CONFIG = "batch.size";
+    private static final String POLL_SIZE_CONFIG = "poll.size";
 
-    private static final String BATCH_INTERVAL_CONFIG = "batch.interval";
+    private static final String POLL_INTERVAL_CONFIG = "poll.interval.ms";
 
     private static final String MESSAGE_TEMPLATE_CONFIG = "message.template";
 
@@ -45,8 +45,8 @@ public class DatagenConnectorConfig extends AbstractConfig {
     private static final ConfigDef CONFIG_DEF = new ConfigDef()
             .define(TOPIC_CONFIG, Type.STRING, Importance.HIGH, "Kafka topic")
             .define(TEST_MODE_CONFIG, Type.STRING, "performance", Importance.HIGH, "Test mode: either 'performance' or integration'")
-            .define(BATCH_SIZE_CONFIG, Type.INT, Importance.HIGH, "Number of messages sent in 1 batch")
-            .define(BATCH_INTERVAL_CONFIG, Type.DOUBLE, Importance.HIGH, "Time interval in seconds between 2 batches.")
+            .define(POLL_SIZE_CONFIG, Type.INT, Importance.HIGH, "Number of messages sent in 1 batch")
+            .define(POLL_INTERVAL_CONFIG, Type.INT, Importance.HIGH, "Time interval in seconds between 2 batches.")
             .define(MESSAGE_TEMPLATE_CONFIG, Type.STRING, Importance.HIGH, "Template to be used for each message.")
             .define(RANDOM_FIELD_CONFIG, Type.STRING, Importance.HIGH, "Field to be randomized.")
             .define(RANDOM_FIELD_VALUES_CONFIG, Type.LIST, Importance.HIGH, "Possible values for the specified random field.")
@@ -54,8 +54,8 @@ public class DatagenConnectorConfig extends AbstractConfig {
 
     public final String topic;
     public final String testMode;
-    public final int batchSize;
-    public final double batchInterval;
+    public final int pollSize;
+    public final int pollInterval;
     public final String messageTemplate;
     public final String randomField;
     public final List<String> randomFieldValues;
@@ -65,8 +65,8 @@ public class DatagenConnectorConfig extends AbstractConfig {
         super(definition, originals);
         this.topic = getString(TOPIC_CONFIG);
         this.testMode = getString(TEST_MODE_CONFIG);
-        this.batchSize = getInt(BATCH_SIZE_CONFIG);
-        this.batchInterval = getDouble(BATCH_INTERVAL_CONFIG);
+        this.pollSize = getInt(POLL_SIZE_CONFIG);
+        this.pollInterval = getInt(POLL_INTERVAL_CONFIG);
         this.messageTemplate = getString(MESSAGE_TEMPLATE_CONFIG);
         this.randomField = getString(RANDOM_FIELD_CONFIG);
         this.randomFieldValues = getList(RANDOM_FIELD_VALUES_CONFIG);
