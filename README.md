@@ -13,8 +13,7 @@
 | `poll.size`             | Number of messages sent in one batch | |
 | `poll.interval.ms`      | Time interval between two batches | |
 | `message.template`      | Template to be used for each message | |
-| `random.field`          | Field to be randomized | |
-| `random.field.values`   | Comma-delimited possible values for the specified random field | |
+| `random.fields`         | Fields to be randomized with possible values in format like: <code>status:foo&#124;bar,direction:up&#124;down</code>| |
 | `event.timestamp.field` | Field for storing event timestamp | `ts` |
 
 ## Use as Kafka Connect plugin
@@ -36,7 +35,6 @@
 
 ## TODO
 
-- Multiple random fields
 - Integration test mode
 - Config validation
 - JSON schema support

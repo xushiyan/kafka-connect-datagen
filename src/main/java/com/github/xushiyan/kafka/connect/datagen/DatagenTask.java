@@ -26,6 +26,7 @@ import org.apache.kafka.connect.source.SourceTask;
 import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 public class DatagenTask extends SourceTask {
     private DatagenConnectorConfig config;
@@ -55,12 +56,22 @@ public class DatagenTask extends SourceTask {
         List<SourceRecord> records = new ArrayList<>(config.pollSize);
         Random randomizer = new Random();
 
+        List<String> randomFieldsValues = config.randomFields;
+        Map<String, String[]> randomFieldsValueMap = new HashMap<>();
+        for (String kv : randomFieldsValues) {
+            String[] fieldAndValues = kv.split(":");
+            String fieldName = fieldAndValues[0];
+            String[] values = fieldAndValues[1].split(Pattern.quote("|"));
+            randomFieldsValueMap.put(fieldName, values);
+        }
+
         for (int i = 0; i < config.pollSize; i++) {
             JsonObject msg = msgTemplate.deepCopy();
 
-            int num = config.randomFieldValues.size();
-            String randomValue = config.randomFieldValues.get(randomizer.nextInt(num));
-            msg.addProperty(config.randomField, randomValue);
+            for (Map.Entry<String, String[]> entry : randomFieldsValueMap.entrySet()) {
+                String[] values = entry.getValue();
+                msg.addProperty(entry.getKey(), values[randomizer.nextInt(values.length)]);
+            }
 
             Instant now = Instant.now();
             long nanos = TimeUnit.SECONDS.toNanos(now.getEpochSecond()) + now.getNano();

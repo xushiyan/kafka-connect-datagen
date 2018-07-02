@@ -36,9 +36,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
 
     private static final String MESSAGE_TEMPLATE_CONFIG = "message.template";
 
-    private static final String RANDOM_FIELD_CONFIG = "random.field";
-
-    private static final String RANDOM_FIELD_VALUES_CONFIG = "random.field.values";
+    private static final String RANDOM_FIELDS_CONFIG = "random.fields";
 
     private static final String EVENT_TIMESTAMP_FIELD_CONFIG = "event.timestamp.field";
 
@@ -48,8 +46,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
             .define(POLL_SIZE_CONFIG, Type.INT, Importance.HIGH, "Number of messages sent in 1 batch")
             .define(POLL_INTERVAL_CONFIG, Type.INT, Importance.HIGH, "Time interval in seconds between 2 batches.")
             .define(MESSAGE_TEMPLATE_CONFIG, Type.STRING, Importance.HIGH, "Template to be used for each message.")
-            .define(RANDOM_FIELD_CONFIG, Type.STRING, Importance.HIGH, "Field to be randomized.")
-            .define(RANDOM_FIELD_VALUES_CONFIG, Type.LIST, Importance.HIGH, "Possible values for the specified random field.")
+            .define(RANDOM_FIELDS_CONFIG, Type.LIST, Importance.HIGH, "Fields to be randomized.")
             .define(EVENT_TIMESTAMP_FIELD_CONFIG, Type.STRING, "ts", Importance.MEDIUM, "Field for storing event timestamp.");
 
     public final String topic;
@@ -57,8 +54,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
     public final int pollSize;
     public final int pollInterval;
     public final String messageTemplate;
-    public final String randomField;
-    public final List<String> randomFieldValues;
+    public final List<String> randomFields;
     public final String eventTimestampField;
 
     public DatagenConnectorConfig(ConfigDef definition, Map<?, ?> originals) {
@@ -68,8 +64,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
         this.pollSize = getInt(POLL_SIZE_CONFIG);
         this.pollInterval = getInt(POLL_INTERVAL_CONFIG);
         this.messageTemplate = getString(MESSAGE_TEMPLATE_CONFIG);
-        this.randomField = getString(RANDOM_FIELD_CONFIG);
-        this.randomFieldValues = getList(RANDOM_FIELD_VALUES_CONFIG);
+        this.randomFields = getList(RANDOM_FIELDS_CONFIG);
         this.eventTimestampField = getString(EVENT_TIMESTAMP_FIELD_CONFIG);
     }
 
