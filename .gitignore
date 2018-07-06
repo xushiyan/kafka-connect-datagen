@@ -121,3 +121,5 @@ gradle-app.setting
 
 
 # End of https://www.gitignore.io/api/java,maven,gradle,intellij
+
+docs/_*
