@@ -16,6 +16,7 @@
 
 package com.github.xushiyan.kafka.connect.datagen;
 
+import com.github.xushiyan.kafka.connect.datagen.utils.Version;
 import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.connect.connector.Task;
 import org.apache.kafka.connect.source.SourceConnector;
@@ -28,7 +29,7 @@ public class DatagenConnector extends SourceConnector {
     private Map<String, String> props;
 
     public String version() {
-        return VersionUtil.VERSION;
+        return Version.get();
     }
 
     public void start(Map<String, String> props) {

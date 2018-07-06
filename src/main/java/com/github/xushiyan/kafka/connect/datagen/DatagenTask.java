@@ -16,6 +16,7 @@
 
 package com.github.xushiyan.kafka.connect.datagen;
 
+import com.github.xushiyan.kafka.connect.datagen.utils.Version;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -34,7 +35,7 @@ public class DatagenTask extends SourceTask {
     private JsonObject messageTemplate;
 
     public String version() {
-        return VersionUtil.VERSION;
+        return Version.get();
     }
 
     public void start(Map<String, String> props) {
