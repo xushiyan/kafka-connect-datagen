@@ -1,20 +1,10 @@
-# kafka-connect-datagen
+# Kafka Connect Datagen Connector
 
 [![Build Status](https://travis-ci.org/xushiyan/kafka-connect-datagen.svg?branch=master)](https://travis-ci.org/xushiyan/kafka-connect-datagen)
+[![Documentation Status](https://readthedocs.org/projects/kafka-connect-datagen/badge/?version=latest)](https://kafka-connect-datagen.readthedocs.io/en/latest/?badge=latest)
 
-`kafka-connect-datagen` is a [Kafka Connect](http://kafka.apache.org/documentation.html#connect) plugin that generates test data for performance and integration tests.
 
-## Configurations
-
-| Key | Notes | Default Value |
-|:----|-------|:-------------:|
-| `topic`                 | Kafka topic to send data to ||
-| `test.mode`             | To indicate test setup type: `performance` or `integration`| `performance`|
-| `poll.size`             | Number of messages sent in one batch | |
-| `poll.interval.ms`      | Time interval between two batches | |
-| `message.template`      | Template to be used for each message | |
-| `random.fields`         | Fields to be randomized with possible values in format like: <code>status:foo&#124;bar,direction:up&#124;down</code>| |
-| `event.timestamp.field` | Field for storing event timestamp | `ts` |
+`kafka-connect-datagen` is a [Kafka Connect](http://kafka.apache.org/documentation.html#connect) plugin that generates data for integration and performance tests.
 
 ## Use as Kafka Connect plugin
 
@@ -39,3 +29,7 @@
 - Config validation
 - JSON schema support
 - Protobuf support
+
+# License
+
+The project is licensed under the Apache 2 license.
