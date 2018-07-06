@@ -7,7 +7,11 @@
     <groupId>com.github.xushiyan</groupId>
     <artifactId>kafka-connect-datagen</artifactId>
     <version>1.0</version>
+
+    <name>Kafka Connect Datagen</name>
+    <description>A Kafka Connect source connector to generate data for tests.</description>
     <url>https://github.com/xushiyan/kafka-connect-datagen/</url>
+    <inceptionYear>2018</inceptionYear>
     <licenses>
         <license>
             <name>Apache License 2.0</name>
@@ -15,6 +19,46 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>xushiyan</id>
+            <name>Xu Shiyan</name>
+            <email>xu.shiyan.raymond@gmail.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <kafka-connect-api.version>1.1.0</kafka-connect-api.version>
+        <kafka-connect-json.version>1.1.0</kafka-connect-json.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>connect-api</artifactId>
+            <version>${kafka-connect-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>connect-json</artifactId>
+            <version>${kafka-connect-json.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -46,25 +90,38 @@
         </plugins>
     </build>
 
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.kafka/connect-api -->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>connect-api</artifactId>
-            <version>1.1.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.8.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <profiles>
+        <profile>
+            <id>generate-config-docs</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>connect-api</artifactId>
+                    <version>${kafka-connect-api.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                                <configuration>
+                                    <mainClass>com.github.xushiyan.kafka.connect.datagen.utils.Doc</mainClass>
+                                    <commandlineArgs>${project.basedir}/docs</commandlineArgs>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

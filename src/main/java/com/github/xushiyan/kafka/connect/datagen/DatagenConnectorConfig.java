@@ -41,13 +41,20 @@ public class DatagenConnectorConfig extends AbstractConfig {
     private static final String EVENT_TIMESTAMP_FIELD_CONFIG = "event.timestamp.field";
 
     private static final ConfigDef CONFIG_DEF = new ConfigDef()
-            .define(TOPIC_CONFIG, Type.STRING, Importance.HIGH, "Kafka topic")
-            .define(TEST_MODE_CONFIG, Type.STRING, "performance", Importance.HIGH, "Test mode: either 'performance' or integration'")
-            .define(POLL_SIZE_CONFIG, Type.INT, Importance.HIGH, "Number of messages sent in 1 batch")
-            .define(POLL_INTERVAL_CONFIG, Type.INT, Importance.HIGH, "Time interval in seconds between 2 batches.")
-            .define(MESSAGE_TEMPLATE_CONFIG, Type.STRING, Importance.HIGH, "Template to be used for each message.")
-            .define(RANDOM_FIELDS_CONFIG, Type.LIST, Importance.HIGH, "Fields to be randomized.")
-            .define(EVENT_TIMESTAMP_FIELD_CONFIG, Type.STRING, "ts", Importance.MEDIUM, "Field for storing event timestamp.");
+            .define(TOPIC_CONFIG, Type.STRING, Importance.HIGH,
+                    "Kafka topic")
+            .define(TEST_MODE_CONFIG, Type.STRING, "performance", Importance.HIGH,
+                    "Indicator for test mode: either 'performance' or integration'")
+            .define(POLL_SIZE_CONFIG, Type.INT, Importance.HIGH,
+                    "Number of messages to be sent in one poll.")
+            .define(POLL_INTERVAL_CONFIG, Type.INT, Importance.HIGH,
+                    "Time interval (ms) between two polls.")
+            .define(MESSAGE_TEMPLATE_CONFIG, Type.STRING, Importance.HIGH,
+                    "Message template to be used for each message.")
+            .define(RANDOM_FIELDS_CONFIG, Type.LIST, Importance.HIGH,
+                    "List of fields to be randomized.")
+            .define(EVENT_TIMESTAMP_FIELD_CONFIG, Type.STRING, "ts", Importance.MEDIUM,
+                    "Field for storing event timestamp.");
 
     public final String topic;
     public final String testMode;
@@ -68,7 +75,12 @@ public class DatagenConnectorConfig extends AbstractConfig {
         this.eventTimestampField = getString(EVENT_TIMESTAMP_FIELD_CONFIG);
     }
 
+    /**
+     *
+     * @return The {@link ConfigDef} of {@link DatagenConnector}.
+     */
     public static ConfigDef definition() {
         return CONFIG_DEF;
     }
+
 }
