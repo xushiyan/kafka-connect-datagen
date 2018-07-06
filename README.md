@@ -6,6 +6,8 @@
 
 `kafka-connect-datagen` is a [Kafka Connect](http://kafka.apache.org/documentation.html#connect) plugin that generates data for integration and performance tests.
 
+The documentation is hosted on [readthedocs.org](http://kafka-connect-datagen.rtfd.io/).
+
 ## Use as Kafka Connect plugin
 
 - Import as maven project
@@ -30,6 +32,11 @@
 - JSON schema support
 - Protobuf support
 
+# Contribute
+
+- Documentation: http://kafka-connect-datagen.rtfd.io
+- Source Code: https://github.com/xushiyan/kafka-connect-datagen
+
 # License
 
-The project is licensed under the Apache 2 license.
+[Apache License 2.0](./LICENSE)
