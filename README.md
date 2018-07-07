@@ -8,12 +8,7 @@
 
 ## Documentation
 
-The documentation is hosted on [readthedocs.org](http://kafka-connect-datagen.rtfd.io/).
-
-## Contribute
-
-- Documentation: http://kafka-connect-datagen.rtfd.io
-- Source Code: https://github.com/xushiyan/kafka-connect-datagen
+- The user guide is hosted on [readthedocs.org](http://kafka-connect-datagen.rtfd.io/).
 
 ## License
 
