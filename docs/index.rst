@@ -12,7 +12,6 @@ Welcome to Kafka Connect Datagen's documentation!
 
    quickstart.rst
    configurations.rst
-   packages.rst
 
 
 
