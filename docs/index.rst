@@ -7,9 +7,10 @@ Welcome to Kafka Connect Datagen's documentation!
 =================================================
 
 .. toctree::
-   :maxdepth: 2
    :caption: Contents:
+   :titlesonly:
 
+   quickstart.rst
    configurations.rst
    packages.rst
 
