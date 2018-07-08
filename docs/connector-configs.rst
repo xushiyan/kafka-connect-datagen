@@ -1,44 +1,46 @@
-``message.template``
-  Message template to be used for each message.
+``topic.name``
+  Name of the Kafka topic to publish data to.
 
   * Type: string
   * Importance: high
 
-``poll.interval.ms``
-  Time interval (ms) between two polls.
+``test.mode``
+  Indicate test mode: either 'performance' or integration'
 
-  * Type: int
+  * Type: string
+  * Default: performance
   * Importance: high
 
 ``poll.size``
   Number of messages to be sent in one poll.
 
   * Type: int
-  * Importance: high
+  * Default: 1
+  * Importance: medium
+
+``poll.interval.ms``
+  Time interval (ms) between two polls.
+
+  * Type: int
+  * Default: 10000
+  * Importance: medium
+
+``message.template``
+  Message template to be used for each message.
+
+  * Type: string
+  * Importance: medium
 
 ``random.fields``
   List of fields to be randomized.
 
   * Type: list
-  * Importance: high
-
-``topic``
-  Kafka topic
-
-  * Type: string
-  * Importance: high
-
-``test.mode``
-  Indicator for test mode: either 'performance' or integration'
-
-  * Type: string
-  * Default: performance
-  * Importance: high
+  * Importance: medium
 
 ``event.timestamp.field``
-  Field for storing event timestamp.
+  Name of the field to store event timestamp.
 
   * Type: string
   * Default: ts
-  * Importance: medium
+  * Importance: low
 
