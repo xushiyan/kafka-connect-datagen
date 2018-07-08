@@ -6,11 +6,11 @@
 
     <groupId>com.github.xushiyan</groupId>
     <artifactId>kafka-connect-datagen</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0-SNAPSHOT</version>
 
     <name>Kafka Connect Datagen</name>
     <description>A Kafka Connect source connector to generate data for tests.</description>
-    <url>https://github.com/xushiyan/kafka-connect-datagen/</url>
+    <url>http://kafka-connect-datagen.rtfd.io</url>
     <inceptionYear>2018</inceptionYear>
     <licenses>
         <license>
@@ -19,6 +19,13 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/xushiyan/kafka-connect-datagen.git</connection>
+        <developerConnection>scm:git:git@github.com:xushiyan/kafka-connect-datagen.git</developerConnection>
+        <url>https://github.com/xushiyan/kafka-connect-datagen</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <developers>
         <developer>
@@ -95,6 +102,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
