@@ -3,15 +3,20 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Kafka Connect Datagen's documentation!
-=================================================
+#####################
+Kafka Connect Datagen
+#####################
+
+.. include:: link_quickstart.rst
+
+Table of Contents
+=================
 
 .. toctree::
-   :caption: Contents:
-   :titlesonly:
+   :maxdepth: 2
 
-   quickstart.rst
-   configurations.rst
+   guide_development.rst
+   guide_configurations.rst
 
 
 

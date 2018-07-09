@@ -1,11 +1,12 @@
-Quick Start
-===========
+***********
+Development
+***********
 
 Installation
-############
+============
 
 Build from Source
-*****************
+-----------------
 
 * Import as Maven project
 * Generate the jar file

@@ -8,7 +8,7 @@
 
 ## Documentation
 
-- The user guide is hosted on [readthedocs.org](http://kafka-connect-datagen.rtfd.io/).
+- User guide: http://kafka-connect-datagen.rtfd.io
 
 ## License
 
