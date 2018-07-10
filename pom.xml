@@ -4,7 +4,7 @@
 
     <groupId>com.github.xushiyan</groupId>
     <artifactId>kafka-connect-datagen</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <name>Kafka Connect Datagen</name>
     <description>A Kafka Connect source connector to generate data for tests.</description>
@@ -22,7 +22,7 @@
         <connection>scm:git:git://github.com/xushiyan/kafka-connect-datagen.git</connection>
         <developerConnection>scm:git:git@github.com:xushiyan/kafka-connect-datagen.git</developerConnection>
         <url>https://github.com/xushiyan/kafka-connect-datagen</url>
-        <tag>0.1.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <developers>
