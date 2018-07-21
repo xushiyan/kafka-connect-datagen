@@ -31,11 +31,6 @@ public class DatagenConnectorConfig extends AbstractConfig {
     private static final String TOPIC_NAME_DOC = "Name of the Kafka topic to publish data to.";
     private static final String TOPIC_NAME_DISPLAY = "Topic Name";
 
-    private static final String TEST_MODE_CONFIG = "test.mode";
-    private static final String TEST_MODE_DOC = "Indicate test mode: either 'performance' or integration'";
-    private static final String TEST_MODE_DISPLAY = "Test Mode";
-    private static final String TEST_MODE_DEFAULT = "performance";
-
     private static final String POLL_SIZE_CONFIG = "poll.size";
     private static final String POLL_SIZE_DOC = "Number of messages to be sent in one poll.";
     private static final String POLL_SIZE_DISPLAY = "Poll Size";
@@ -67,14 +62,6 @@ public class DatagenConnectorConfig extends AbstractConfig {
                     CONNECTOR_GROUP, 1,
                     ConfigDef.Width.LONG,
                     TOPIC_NAME_DISPLAY)
-            .define(TEST_MODE_CONFIG,
-                    Type.STRING,
-                    TEST_MODE_DEFAULT,
-                    Importance.HIGH,
-                    TEST_MODE_DOC,
-                    CONNECTOR_GROUP, 2,
-                    ConfigDef.Width.LONG,
-                    TEST_MODE_DISPLAY)
             .define(POLL_SIZE_CONFIG,
                     Type.INT,
                     POLL_SIZE_DEFAULT,
@@ -115,7 +102,6 @@ public class DatagenConnectorConfig extends AbstractConfig {
                     EVENT_TIMESTAMP_FIELD_DISPLAY);
 
     public final String topicName;
-    public final String testMode;
     public final int pollSize;
     public final int pollInterval;
     public final String messageTemplate;
@@ -125,7 +111,6 @@ public class DatagenConnectorConfig extends AbstractConfig {
     public DatagenConnectorConfig(ConfigDef definition, Map<?, ?> originals) {
         super(definition, originals);
         this.topicName = getString(TOPIC_NAME_CONFIG);
-        this.testMode = getString(TEST_MODE_CONFIG);
         this.pollSize = getInt(POLL_SIZE_CONFIG);
         this.pollInterval = getInt(POLL_INTERVAL_CONFIG);
         this.messageTemplate = getString(MESSAGE_TEMPLATE_CONFIG);

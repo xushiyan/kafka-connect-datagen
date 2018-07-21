@@ -22,8 +22,8 @@ Quick Start
 
   *Wait for Kafka Broker and Kafka Connect cluster to be fully started.*
 
-    * Check https://localhost:8000 to see the Broker UI
-    * Check https://localhost:8001 to see the Connect UI
+    * Check http://localhost:8000 to see the Broker UI
+    * Check http://localhost:8001 to see the Connect UI
 
 * Create data generation task
 

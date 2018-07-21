@@ -4,13 +4,6 @@
   * Type: string
   * Importance: high
 
-``test.mode``
-  Indicate test mode: either 'performance' or integration'
-
-  * Type: string
-  * Default: performance
-  * Importance: high
-
 ``poll.size``
   Number of messages to be sent in one poll.
 

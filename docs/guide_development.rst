@@ -28,7 +28,7 @@ files, run
 
 .. code-block:: bash
 
-  mvn test -Pgenerate-config-docs
+  mvn clean compile test -Pgenerate-config-docs
 
 
 Update user guide

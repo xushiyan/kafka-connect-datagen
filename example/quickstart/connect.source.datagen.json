@@ -1,14 +1,13 @@
 {
   "name": "connect.source.datagen",
   "config": {
-    "connector.class": "com.github.xushiyan.kafka.connect.datagen.DatagenConnector",
+    "connector.class": "com.github.xushiyan.kafka.connect.datagen.performance.DatagenConnector",
     "tasks.max": "1",
     "topic.name": "generated.events",
     "key.converter": "org.apache.kafka.connect.storage.StringConverter",
     "key.converter.schemas.enable": false,
     "value.converter": "org.apache.kafka.connect.storage.StringConverter",
     "value.converter.schemas.enable": false,
-    "test.mode": "performance",
     "poll.size": 10,
     "poll.interval.ms": 5000,
     "message.template": "{\"status\":\"foo\",\"direction\":\"up\"}",
