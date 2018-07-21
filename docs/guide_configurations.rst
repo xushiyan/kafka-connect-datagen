@@ -2,7 +2,7 @@
 Configurations
 **************
 
-Connector
-=========
+Performance Connector
+---------------------
 
-.. include:: connector-configs.rst
+.. include:: configs_performance_connector.rst

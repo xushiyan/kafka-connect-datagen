@@ -13,17 +13,19 @@
     <licenses>
         <license>
             <name>Apache License 2.0</name>
-            <url>https://github.com/xushiyan/kafka-connect-datagen/blob/master/LICENSE</url>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <scm>
-        <connection>scm:git:git://github.com/xushiyan/kafka-connect-datagen.git</connection>
-        <developerConnection>scm:git:git@github.com:xushiyan/kafka-connect-datagen.git</developerConnection>
         <url>https://github.com/xushiyan/kafka-connect-datagen</url>
-        <tag>HEAD</tag>
     </scm>
+
+    <issueManagement>
+        <system>GitHub issues</system>
+        <url>https://github.com/xushiyan/kafka-connect-datagen/issues</url>
+    </issueManagement>
 
     <developers>
         <developer>

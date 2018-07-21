@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package com.github.xushiyan.kafka.connect.datagen;
+package com.github.xushiyan.kafka.connect.datagen.performance;
 
 import org.apache.kafka.common.config.AbstractConfig;
 import org.apache.kafka.common.config.ConfigDef;

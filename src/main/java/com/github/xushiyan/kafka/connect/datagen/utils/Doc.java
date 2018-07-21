@@ -6,10 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import static com.github.xushiyan.kafka.connect.datagen.DatagenConnectorConfig.definition;
+import static com.github.xushiyan.kafka.connect.datagen.performance.DatagenConnectorConfig.definition;
 
 public class Doc {
-    private static final String CONFIGS_DOC_NAME = "connector-configs.rst";
+    private static final String CONFIGS_DOC_NAME = "configs_performance_connector.rst";
 
     public static void main(String[] args) throws IOException {
         Path docPath = Paths.get(args[0], CONFIGS_DOC_NAME);
