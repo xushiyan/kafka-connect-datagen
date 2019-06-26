@@ -41,6 +41,10 @@ public class DatagenConnectorConfig extends AbstractConfig {
     private static final String POLL_INTERVAL_DISPLAY = "Poll Interval";
     private static final int POLL_INTERVAL_DEFAULT = 10000;
 
+    private static final String MESSAGE_KEY_NAME_CONFIG = "message.key";
+    private static final String MESSAGE_KEY_NAME_DOC = "Key of the message to be used for each message (optional).";
+    private static final String MESSAGE_KEY_NAME_DISPLAY = "Key message";
+
     private static final String MESSAGE_TEMPLATE_CONFIG = "message.template";
     private static final String MESSAGE_TEMPLATE_DOC = "Message template to be used for each message.";
     private static final String MESSAGE_TEMPLATE_DISPLAY = "Message Template";
@@ -78,6 +82,14 @@ public class DatagenConnectorConfig extends AbstractConfig {
                     CONNECTOR_GROUP, 4,
                     ConfigDef.Width.LONG,
                     POLL_INTERVAL_DISPLAY)
+            .define(MESSAGE_KEY_NAME_CONFIG,
+                    Type.STRING,
+                    null, // Default value
+                    Importance.MEDIUM,
+                    MESSAGE_KEY_NAME_DOC,
+                    CONNECTOR_GROUP, 5,
+                    ConfigDef.Width.LONG,
+                    MESSAGE_KEY_NAME_DISPLAY)
             .define(MESSAGE_TEMPLATE_CONFIG,
                     Type.STRING,
                     Importance.MEDIUM,
@@ -104,6 +116,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
     public final String topicName;
     public final int pollSize;
     public final int pollInterval;
+    public final String messageKey;
     public final String messageTemplate;
     public final List<String> randomFields;
     public final String eventTimestampField;
@@ -113,6 +126,7 @@ public class DatagenConnectorConfig extends AbstractConfig {
         this.topicName = getString(TOPIC_NAME_CONFIG);
         this.pollSize = getInt(POLL_SIZE_CONFIG);
         this.pollInterval = getInt(POLL_INTERVAL_CONFIG);
+        this.messageKey = getString(MESSAGE_KEY_NAME_CONFIG);
         this.messageTemplate = getString(MESSAGE_TEMPLATE_CONFIG);
         this.randomFields = getList(RANDOM_FIELDS_CONFIG);
         this.eventTimestampField = getString(EVENT_TIMESTAMP_FIELD_CONFIG);

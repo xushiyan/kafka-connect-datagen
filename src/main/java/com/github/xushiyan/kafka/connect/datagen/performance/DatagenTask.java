@@ -79,7 +79,16 @@ public class DatagenTask extends SourceTask {
 
             msg.addProperty(config.eventTimestampField, nanos);
 
-            records.add(new SourceRecord(sourcePartition, sourceOffset, config.topicName, Schema.STRING_SCHEMA, gson.toJson(msg)));
+            if(config.messageKey != null && config.messageKey.length() != 0 ) {
+
+                records.add(new SourceRecord(sourcePartition, sourceOffset, config.topicName, Schema.STRING_SCHEMA, config.messageKey, Schema.STRING_SCHEMA, gson.toJson(msg)));
+
+            } else {
+
+                records.add(new SourceRecord(sourcePartition, sourceOffset, config.topicName, Schema.STRING_SCHEMA, gson.toJson(msg)));
+            }
+
+           
         }
 
         return records;
